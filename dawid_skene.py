@@ -11,6 +11,10 @@
 # p(x_ij = 1 | t_i = 0) = \alpha^{j}_{0}
 # p(x_ij = 1 | t_i = 1) = \alpha^{j}_{1}
 
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 
 import numpy as np
 import tensorflow as tf
