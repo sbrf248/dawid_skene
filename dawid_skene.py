@@ -34,7 +34,7 @@ t_true_2D = np.array([t_true, 1-t_true])
 alpha_true = np.random.beta(a=1, b=1, size=[K, 2])
 
 x_data = np.random.rand(K, N) < np.dot(alpha_true, t_true_2D)
-
+x_data = x_data + 0
 
 # model
 pi = Dirichlet(concentration=tf.ones(2))
@@ -47,7 +47,7 @@ qpi = PointMass(params=tf.nn.softmax(tf.Variable(tf.random_normal([2]))))
 qt = PointMass(params=tf.nn.softmax(tf.Variable(tf.random_normal([N, 2]))))
 qalpha = PointMass(params=tf.nn.sigmoid(tf.Variable(tf.random_normal([K, 2]))))
 
-inference = ed.MAP({pi: qpi, t: qt, alpha: qalpha}, data={X: x_data+0})
+inference = ed.MAP({pi: qpi, t: qt, alpha: qalpha}, data={X: x_data})
 
 inference.run(n_iter=5000)
 
